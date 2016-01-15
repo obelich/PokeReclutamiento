@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.8.2-beta" last-position="0,0" last-zoom="1.4"
+<dbmodel pgmodeler-ver="0.8.2-beta" last-position="444,3" last-zoom="1.4"
 	 default-schema="public" default-owner="postgres">
 <database name="new_database">
 </database>
@@ -136,6 +136,48 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<type name="varchar"/>
 	</column>
 	<constraint name="pk_cities_id" type="pk-constr" table="public.cities">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="files">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="375" y="213.571"/>
+	<column name="id" not-null="true">
+		<type name="bigserial"/>
+	</column>
+	<column name="fileable_id" not-null="true">
+		<type name="bigint"/>
+	</column>
+	<column name="fileable_type">
+		<type name="varchar"/>
+	</column>
+	<column name="type">
+		<type name="smallint"/>
+	</column>
+	<column name="archive">
+		<type name="varchar"/>
+	</column>
+	<constraint name="pk_files_id" type="pk-constr" table="public.files">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="positions">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="865.714" y="148.571"/>
+	<column name="id" not-null="true">
+		<type name="bigserial"/>
+	</column>
+	<column name="position" not-null="true">
+		<type name="varchar"/>
+	</column>
+	<column name="description">
+		<type name="text"/>
+	</column>
+	<constraint name="pk_positions_id" type="pk-constr" table="public.positions">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>

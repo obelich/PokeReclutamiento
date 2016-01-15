@@ -1,8 +1,40 @@
 source 'https://rubygems.org'
 
-6646366522
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
+
+
+#SUBIDA DE ARCHIVOS
+  gem 'carrierwave'
+  gem 'carrierwave-hex-prefix-for-file-storage'
+  gem 'fog'
+  # gem "asset_sync"
+    #Tratado de imagenes
+      gem 'mini_magick'
+      #gem 'sprite-factory'
+      #gem 'rmagick'
+
+
+#AUTENTIFICACION
+  gem 'devise'
+  gem 'cancan'
+  gem 'rolify', github: 'RolifyCommunity/rolify'
+
+group :development, :test do
+  gem 'rspec-rails', '~>3.2.1'
+  gem 'capybara'
+  gem "better_errors"
+  gem 'pry-rails'
+  gem 'pry'
+  gem 'annotate'
+  gem 'seed_dump'
+  gem 'quiet_assets'
+  gem 'guard-livereload'
+  gem 'guard'
+  gem 'tzinfo-data'
+end
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
