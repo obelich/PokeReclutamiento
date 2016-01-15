@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.8.2-beta" last-position="0,0" last-zoom="1.4"
+	 default-schema="public" default-owner="postgres">
+<database name="new_database">
+</database>
+
+<schema name="public" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="people">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="625.714" y="284.714"/>
+	<column name="id" not-null="true">
+		<type name="bigserial"/>
+	</column>
+	<column name="names" not-null="true">
+		<type name="varchar"/>
+	</column>
+	<column name="lastname" not-null="true">
+		<type name="varchar"/>
+	</column>
+	<column name="mothername">
+		<type name="varchar"/>
+	</column>
+	<constraint name="fk_people_id" type="pk-constr" table="public.people">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="telephones">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="795" y="6.4286"/>
+	<column name="id" not-null="true">
+		<type name="bigserial"/>
+	</column>
+	<column name="number">
+		<type name="varchar"/>
+	</column>
+	<column name="telefeable_id" not-null="true">
+		<type name="bigint"/>
+	</column>
+	<column name="telefeable_type" not-null="true">
+		<type name="varchar"/>
+	</column>
+	<column name="type">
+		<type name="varchar"/>
+	</column>
+	<constraint name="pk_telephones_id" type="pk-constr" table="public.telephones">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="addresses">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="327.143" y="15"/>
+	<column name="id" not-null="true">
+		<type name="bigserial"/>
+	</column>
+	<column name="addresseable_id" not-null="true">
+		<type name="bigint"/>
+	</column>
+	<column name="addresseable_type" not-null="true">
+		<type name="varchar"/>
+	</column>
+	<column name="colony">
+		<type name="varchar"/>
+	</column>
+	<column name="street">
+		<type name="varchar"/>
+	</column>
+	<column name="interiornumber">
+		<type name="varchar"/>
+	</column>
+	<column name="extnumber">
+		<type name="varchar"/>
+	</column>
+	<column name="city_id" not-null="true">
+		<type name="bigint"/>
+	</column>
+	<constraint name="pk_addresses_id" type="pk-constr" table="public.addresses">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="countries">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="24.2861" y="16.429"/>
+	<column name="id" not-null="true">
+		<type name="bigserial"/>
+	</column>
+	<column name="country" not-null="true">
+		<type name="varchar"/>
+	</column>
+	<constraint name="pk_countries_id" type="pk-constr" table="public.countries">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="states">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="40" y="229.286"/>
+	<column name="id" not-null="true">
+		<type name="bigserial"/>
+	</column>
+	<column name="country_id" not-null="true">
+		<type name="bigint"/>
+	</column>
+	<column name="country">
+		<type name="smallint"/>
+	</column>
+	<constraint name="pk_states_id" type="pk-constr" table="public.states">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="cities">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="315" y="382.143"/>
+	<column name="id" not-null="true">
+		<type name="bigserial"/>
+	</column>
+	<column name="state_id" not-null="true">
+		<type name="bigint"/>
+	</column>
+	<column name="city" not-null="true">
+		<type name="varchar"/>
+	</column>
+	<constraint name="pk_cities_id" type="pk-constr" table="public.cities">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<constraint name="fk_person_id" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.people" table="public.telephones">
+	<columns names="telefeable_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_city_id" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.cities" table="public.addresses">
+	<columns names="city_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_person_id" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.people" table="public.addresses">
+	<columns names="addresseable_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_country_id" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.countries" table="public.states">
+	<columns names="country_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_state_id" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.states" table="public.cities">
+	<columns names="state_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_telephones_people" type="relfk"
+	 src-table="public.telephones"
+	 dst-table="public.people"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_states_countries" type="relfk"
+	 src-table="public.states"
+	 dst-table="public.countries"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_cities_states" type="relfk"
+	 src-table="public.cities"
+	 dst-table="public.states"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_addresses_cities" type="relfk"
+	 src-table="public.addresses"
+	 dst-table="public.cities"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_addresses_people" type="relfk"
+	 src-table="public.addresses"
+	 dst-table="public.people"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>
