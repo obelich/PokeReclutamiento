@@ -24,7 +24,7 @@ gem 'rails', '4.2.5'
 group :development, :test do
   gem 'rspec-rails', '~>3.2.1'
   gem 'capybara'
-  gem "better_errors"
+  gem 'better_errors'
   gem 'pry-rails'
   gem 'pry'
   gem 'annotate'
