@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.8.2-beta" last-position="345,0" last-zoom="1.4"
+<dbmodel pgmodeler-ver="0.8.2-beta" last-position="1357,502" last-zoom="1.4"
 	 default-schema="public" default-owner="postgres">
 <database name="new_database">
 </database>
@@ -14,7 +14,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="people">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="594.285" y="255.428"/>
+	<position x="740" y="200"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
 	</column>
@@ -38,7 +38,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="telephones">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="917.142" y="49.2857"/>
+	<position x="940" y="40"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
 	</column>
@@ -62,7 +62,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="addresses">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="370.714" y="25"/>
+	<position x="380" y="20"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
 	</column>
@@ -95,7 +95,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="countries">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="24.2861" y="16.429"/>
+	<position x="20" y="20"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
 	</column>
@@ -110,7 +110,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="states">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="40" y="229.286"/>
+	<position x="0" y="240"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
 	</column>
@@ -128,7 +128,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="cities">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="315" y="382.143"/>
+	<position x="80" y="420"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
 	</column>
@@ -146,7 +146,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="files">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="742.142" y="535"/>
+	<position x="640" y="440"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
 	</column>
@@ -170,7 +170,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="positions">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1136.43" y="226.429"/>
+	<position x="980" y="720"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
 	</column>
@@ -185,25 +185,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 </table>
 
-<table name="organizations">
-	<schema name="public"/>
-	<role name="postgres"/>
-	<position x="1497.86" y="141.428"/>
-	<column name="id" not-null="true">
-		<type name="bigserial"/>
-	</column>
-	<column name="name">
-		<type name="varchar"/>
-	</column>
-	<constraint name="pk_organization_id" type="pk-constr" table="public.organizations">
-		<columns names="id" ref-type="src-columns"/>
-	</constraint>
-</table>
-
 <table name="candidates">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="923.572" y="351.429"/>
+	<position x="1120" y="320"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
 	</column>
@@ -221,7 +206,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="companies">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1603.57" y="291.429"/>
+	<position x="1620" y="380"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
 	</column>
@@ -239,14 +224,123 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="turns">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1270.71" y="523.571"/>
+	<position x="1460" y="620"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
+	</column>
+	<column name="name">
+		<type name="varchar"/>
+	</column>
+	<column name="startturn">
+		<type name="timestamp"/>
+	</column>
+	<column name="endturn">
+		<type name="timestamp"/>
 	</column>
 	<constraint name="pk_turn_id" type="pk-constr" table="public.turns">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
+
+<table name="contacts">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1300" y="180"/>
+	<column name="id" not-null="true">
+		<type name="bigserial"/>
+	</column>
+	<constraint name="pk_contacts_id" type="pk-constr" table="public.contacts">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="people_has_many_contacts" type="rel1n"
+	 src-col-pattern="person_id"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#cffb5a"
+	 src-table="public.people"
+	 dst-table="public.contacts"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="companies_has_many_contacts" type="rel1n"
+	 src-col-pattern="company_id"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#3f7b0e"
+	 src-table="public.companies"
+	 dst-table="public.contacts"
+	 src-required="false" dst-required="false">
+	<label ref-type="dst-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<table name="experiencejobs">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1160" y="520"/>
+	<column name="id" not-null="true">
+		<type name="bigserial"/>
+	</column>
+	<column name="startyear">
+		<type name="integer"/>
+	</column>
+	<column name="endyear">
+		<type name="integer"/>
+	</column>
+	<column name="reasonout">
+		<type name="varchar"/>
+	</column>
+	<column name="salary">
+		<type name="smallint"/>
+	</column>
+	<column name="nameboss">
+		<type name="varchar"/>
+	</column>
+	<constraint name="pk_experiencejobs" type="pk-constr" table="public.experiencejobs">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="company_id" index="3"/>
+		<object name="person_id" index="2"/>
+		<object name="position_id" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="companies_fk" index="3"/>
+		<object name="people_fk" index="2"/>
+		<object name="positions_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="positions_has_many_experiencejobs" type="rel1n"
+	 src-col-pattern="position_id"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#a80ea9"
+	 src-table="public.positions"
+	 dst-table="public.experiencejobs"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="people_has_many_experiencejobs" type="rel1n"
+	 src-col-pattern="person_id"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#48e3fc"
+	 src-table="public.people"
+	 dst-table="public.experiencejobs"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="companies_has_many_experiencejobs" type="rel1n"
+	 src-col-pattern="company_id"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#68752b"
+	 src-table="public.companies"
+	 dst-table="public.experiencejobs"
+	 src-required="false" dst-required="false"/>
 
 <constraint name="fk_person_id" type="fk-constr" comparison-type="MATCH FULL"
 	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.people" table="public.telephones">
