@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.8.2-beta" last-position="1357,502" last-zoom="1.4"
+<dbmodel pgmodeler-ver="0.8.2-beta" last-position="0,38" last-zoom="1.4"
 	 default-schema="public" default-owner="postgres">
 <database name="new_database">
 </database>
@@ -14,7 +14,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="people">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="740" y="200"/>
+	<position x="225" y="84.2857"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
 	</column>
@@ -30,6 +30,9 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="birthdate">
 		<type name="date"/>
 	</column>
+	<column name="sex" not-null="true">
+		<type name="varchar"/>
+	</column>
 	<constraint name="fk_people_id" type="pk-constr" table="public.people">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
@@ -38,7 +41,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="telephones">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="940" y="40"/>
+	<position x="1475.71" y="0"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
 	</column>
@@ -62,7 +65,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="addresses">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="380" y="20"/>
+	<position x="1801.43" y="102.143"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
 	</column>
@@ -95,7 +98,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="countries">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="20" y="20"/>
+	<position x="2245" y="648.571"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
 	</column>
@@ -110,7 +113,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="states">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="0" y="240"/>
+	<position x="2279.29" y="461.429"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
 	</column>
@@ -128,7 +131,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="cities">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="80" y="420"/>
+	<position x="2272.86" y="267.857"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
 	</column>
@@ -146,7 +149,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="files">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="640" y="440"/>
+	<position x="1219.29" y="516.429"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
 	</column>
@@ -188,12 +191,9 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="candidates">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1120" y="320"/>
+	<position x="1466.43" y="209.286"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
-	</column>
-	<column name="person_id" not-null="true">
-		<type name="bigint"/>
 	</column>
 	<column name="status" not-null="true">
 		<type name="varchar"/>
@@ -206,7 +206,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="companies">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1620" y="380"/>
+	<position x="1705.71" y="382.857"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
 	</column>
@@ -224,7 +224,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="turns">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1460" y="620"/>
+	<position x="1477.86" y="691.429"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
 	</column>
@@ -245,7 +245,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="contacts">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1300" y="180"/>
+	<position x="1096.43" y="277.857"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
 	</column>
@@ -263,23 +263,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 dst-table="public.contacts"
 	 src-required="false" dst-required="false"/>
 
-<relationship name="companies_has_many_contacts" type="rel1n"
-	 src-col-pattern="company_id"
-	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
-	 src-fk-pattern="{st}_fk"
-	 custom-color="#3f7b0e"
-	 src-table="public.companies"
-	 dst-table="public.contacts"
-	 src-required="false" dst-required="false">
-	<label ref-type="dst-label">
-		<position x="0" y="0"/>
-	</label>
-</relationship>
-
 <table name="experiencejobs">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1160" y="520"/>
+	<position x="249.286" y="435.714"/>
 	<column name="id" not-null="true">
 		<type name="bigserial"/>
 	</column>
@@ -342,6 +329,70 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 dst-table="public.experiencejobs"
 	 src-required="false" dst-required="false"/>
 
+<table name="companyclients">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1942.86" y="583.571"/>
+	<column name="id" not-null="true">
+		<type name="bigserial"/>
+	</column>
+	<constraint name="pk_companyclient_id" type="pk-constr" table="public.companyclients">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="companyclients_has_one_companies" type="rel11"
+	 src-col-pattern="company_id"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#ba25cb"
+	 src-table="public.companies"
+	 dst-table="public.companyclients"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="companyclients_has_many_turns" type="rel1n"
+	 src-col-pattern="companyclient_id"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#6b3b5e"
+	 src-table="public.companyclients"
+	 dst-table="public.turns"
+	 src-required="false" dst-required="false"/>
+
+<table name="studies">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="478.571" y="315"/>
+	<column name="id" not-null="true">
+		<type name="bigserial"/>
+	</column>
+	<column name="schoolname" not-null="true">
+		<type name="varchar"/>
+	</column>
+	<column name="datestart">
+		<type name="date"/>
+	</column>
+	<column name="dateend">
+		<type name="date"/>
+	</column>
+	<constraint name="pk_studies_id" type="pk-constr" table="public.studies">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="candidates_has_one_people" type="rel11"
+	 src-col-pattern="person_id"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#fb34da"
+	 src-table="public.people"
+	 dst-table="public.candidates"
+	 src-required="false" dst-required="false"/>
+
 <constraint name="fk_person_id" type="fk-constr" comparison-type="MATCH FULL"
 	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.people" table="public.telephones">
 	<columns names="telefeable_id" ref-type="src-columns"/>
@@ -356,6 +407,12 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <constraint name="fk_person_id" type="fk-constr" comparison-type="MATCH FULL"
 	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.people" table="public.addresses">
+	<columns names="addresseable_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_companyclient_id" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.companyclients" table="public.addresses">
 	<columns names="addresseable_id" ref-type="src-columns"/>
 	<columns names="id" ref-type="dst-columns"/>
 </constraint>
@@ -384,12 +441,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<columns names="id" ref-type="dst-columns"/>
 </constraint>
 
-<constraint name="fk_person_id" type="fk-constr" comparison-type="MATCH FULL"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.people" table="public.candidates">
-	<columns names="person_id" ref-type="src-columns"/>
-	<columns names="id" ref-type="dst-columns"/>
-</constraint>
-
 <relationship name="rel_telephones_people" type="relfk"
 	 src-table="public.telephones"
 	 dst-table="public.people"
@@ -415,11 +466,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 dst-table="public.people"
 	 src-required="false" dst-required="false"/>
 
-<relationship name="rel_candidates_people" type="relfk"
-	 src-table="public.candidates"
-	 dst-table="public.people"
-	 src-required="false" dst-required="false"/>
-
 <relationship name="rel_files_people" type="relfk"
 	 src-table="public.files"
 	 dst-table="public.people"
@@ -428,6 +474,11 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <relationship name="rel_files_companies" type="relfk"
 	 src-table="public.files"
 	 dst-table="public.companies"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_addresses_companyclients" type="relfk"
+	 src-table="public.addresses"
+	 dst-table="public.companyclients"
 	 src-required="false" dst-required="false"/>
 
 </dbmodel>
